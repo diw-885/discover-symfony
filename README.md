@@ -15,3 +15,11 @@ Après avoir cloné le dépôt, le développeur doit taper la commande suivante 
 ```bash
 composer install
 ```
+
+## Attention
+
+J'utilise PHP 7.4. Si vous utilisez PHP 8 ou PHP 7.3 :
+
+```bash
+composer update
+```
