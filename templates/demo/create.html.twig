@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% if message %}
+    Vous avez envoyé le message suivant : {{ message }}
+    {% endif %}
+
+    <form method="POST" action="/discover/create">
+        <input type="text" name="name" placeholder="Nom...">
+        <textarea name="message" placeholder="Message..."></textarea>
+
+        <button>Envoyer</button>
+    </form>
+{% endblock %}
