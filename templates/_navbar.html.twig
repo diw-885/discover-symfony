@@ -1,0 +1,12 @@
+<div style="background-color: {{ theme ?? 'transparent' }}">
+    <nav>
+        <ul>
+            <li>
+                <a href="{{ path('product') }}">Liste des produits</a>
+            </li>
+            <li>
+                <a href="{{ path('product_show', {slug: 'iphone-x'}) }}">iPhone X</a>
+            </li>
+        </ul>
+    </nav>
+</div>

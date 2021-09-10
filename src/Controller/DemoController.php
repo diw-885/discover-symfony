@@ -27,7 +27,7 @@ class DemoController extends AbstractController
         return $this->render('demo/list.html.twig', [
             'page' => $page,
             'cars' => [
-                ['brand' => 'Renault'],
+                ['brand' => '<h1>Renault</h1>'],
                 ['brand' => 'Peugeot'],
                 ['brand' => 'Citroen'],
             ],

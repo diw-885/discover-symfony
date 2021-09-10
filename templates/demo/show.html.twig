@@ -1,5 +1,10 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Une voiture - {{ parent() }}{% endblock %}
+
 {% block body %}
     <h1>Bienvenue sur {{ title }}</h1>
 {% endblock %}
+
+{# Je masque la sidebar sur cette page #}
+{% block sidebar %}{% endblock %}
