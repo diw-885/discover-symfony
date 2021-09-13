@@ -1,31 +1,52 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des produits{% endblock %}
+{% block title %}Liste des produits
+{% endblock %}
 
 {% block body %}
-<div>
-    {# Affiche toutes les variables présentes dans le fichier Twig actuelle #}
-    {{ dump() }}
+	<div>
+		{# Affiche toutes les variables présentes dans le fichier Twig actuelle #}
+		{{ dump() }}
 
-    On est sur la page {{ page }}
+		On est sur la page
+		{{ page }}
+	</div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Prix</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for product in products %}
-                <tr>
-                    <td>{{ product.name }}</td>
-                    <td>{{ product.description }}</td>
-                    <td>{{ product.price }}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
+    <div class="container mt-5 mb-5">
+        <h1 class="text-center mb-5">Nos produits</h1>
+        <div>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Prix</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for key, product in products %}
+                        <tr>
+                            <th scope="row">{{ key + 1 }} {{ loop.index }}</th>
+                            <td>{{ product.name }}</td>
+                            <td>{{ product.description }}</td>
+                            <td>{{ product.price }} €</td>
+                            <td>
+                                <a href="{{ path('product_show', { slug: product.slug }) }}" class="btn btn-secondary">Voir le produit</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            toto, titi et tata <br />
+            toto, titi, tata et tutu <br />
+            {# loop.last renvoie true si on est sur la dernière itération #}
+            {# loop.revindex renvoie le nombre d'itérations restantes avant la fin #}
+            {% for name in ['toto', 'titi', 'tata', 'tutu'] %}
+                {{ name }}{% if not loop.last and loop.revindex != 2 %},{% endif %}{% if loop.revindex == 2 %} et{% endif %}
+            {% endfor %} <br />
+        </div>
+    </div>
 {% endblock %}
