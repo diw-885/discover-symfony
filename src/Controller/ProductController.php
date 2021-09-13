@@ -79,6 +79,22 @@ class ProductController extends AbstractController
     }
 
     /**
+     * @Route("/product/order/{slug}", name="product_order")
+     */
+    public function order($slug)
+    {
+        $product = $this->products[$slug];
+        // Requête SQL, envoyer un mail...
+        // On mets un message dans la session pour l'afficher plus tard UNE SEULE FOIS
+        $this->addFlash(
+            'success',
+            "Nous avons bien pris en compte votre commande ".$product->getName()." de {$product->price} €"
+        );
+
+        return $this->redirectToRoute('product'); // On redirige vers la liste
+    }
+
+    /**
      * @Route("/product/{slug}", name="product_show")
      */
     public function show($slug)

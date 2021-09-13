@@ -6,13 +6,18 @@
 {% block body %}
 	<div>
 		{# Affiche toutes les variables présentes dans le fichier Twig actuelle #}
-		{{ dump() }}
+		{# dump() #}
 
-		On est sur la page
-		{{ page }}
+		On est sur la page {{ page }}
 	</div>
 
     <div class="container mt-5 mb-5">
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+
         <h1 class="text-center mb-5">Nos produits</h1>
         <div>
             <table class="table">

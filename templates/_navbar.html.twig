@@ -7,14 +7,17 @@
             </button>
 
             <div class="collapse navbar-collapse" id="menu">
+                {# dump(app.request.get('_route')) #}
+                {# On peut créer définir des variables dans Twig #}
+                {% set route = app.request.get('_route') %}
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="#">Accueil</a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item {{ route == 'product' ? 'active' : '' }}">
                         <a class="nav-link" href="{{ path('product') }}">Produits</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item {{ route == 'product_show' ? 'active' : '' }}">
                         <a class="nav-link" href="{{ path('product_show', {slug: 'iphone-x'}) }}">iPhone X</a>
                     </li>
                 </ul>
