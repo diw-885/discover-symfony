@@ -45,6 +45,27 @@
                 </tbody>
             </table>
 
+            La page précédente est {{ page - 1 }} <br />
+            La page suivante est {{ page + 1 }} <br />
+
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <!-- Si la page actuelle est 1, on n'affiche pas ce lien -->
+                    <li class="page-item {{ page <= 1 ? 'disabled' : '' }}">
+                        <a class="page-link" href="{{ path('product', { page: page - 1 }) }}">Précédent</a>
+                    </li>
+                    {% for page in 1..pageNumber %}
+                        <li class="page-item">
+                            <a class="page-link" href="{{ path('product', { page: page }) }}">{{ page }}</a>
+                        </li>
+                    {% endfor %}
+                    <!-- Si la page actuelle est la page max, on n'affiche pas ce lien -->
+                    <li class="page-item {{ page >= pageNumber ? 'disabled' : '' }}">
+                        <a class="page-link" href="{{ path('product', { page: page + 1 }) }}">Suivant</a>
+                    </li>
+                </ul>
+            </nav>
+
             toto, titi et tata <br />
             toto, titi, tata et tutu <br />
             {# loop.last renvoie true si on est sur la dernière itération #}

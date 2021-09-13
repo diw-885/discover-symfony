@@ -7,6 +7,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * On préfixe toutes les routes du controlleur
+ *
+ * @Route("/")
+ */
 class ProductController extends AbstractController
 {
     private $products;
@@ -56,6 +61,7 @@ class ProductController extends AbstractController
             // 'products' => $this->products,
             'products' => $products[$page - 1],
             'page' => $page,
+            'pageNumber' => count($products), // 3 pages en tout
         ]);
     }
 
