@@ -1,7 +1,7 @@
 <div style="background-color: {{ theme ?? 'transparent' }}">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="#">Discover</a>
+            <a class="navbar-brand" href="{{ path('home') }}">Discover</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menu">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -11,8 +11,8 @@
                 {# On peut créer définir des variables dans Twig #}
                 {% set route = app.request.get('_route') %}
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Accueil</a>
+                    <li class="nav-item {{ route == 'home' ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ path('home') }}">Accueil</a>
                     </li>
                     <li class="nav-item {{ route == 'product' ? 'active' : '' }}">
                         <a class="nav-link" href="{{ path('product') }}">Produits</a>
